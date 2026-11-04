@@ -2,13 +2,81 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=MBRS%20XBRL/">
-    <title>Redirecting to MBRS XBRL...</title>
-    <script>
-        window.location.replace("MBRS%20XBRL/");
-    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBRS Excel Mapper</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p>Redirecting to <a href="MBRS%20XBRL/">MBRS XBRL</a>...</p>
+    <div class="container">
+        <header>
+            <h1>📊 MBRS Excel Mapper</h1>
+            <p class="subtitle">Transfer data from a filled MBRS source file into an empty MBRS destination template</p>
+        </header>
+
+        <main>
+            <div class="upload-section">
+                <div class="upload-card" id="source-card">
+                    <div class="upload-icon">📥</div>
+                    <h3>Source File</h3>
+                    <p>The filled MBRS file with data</p>
+                    <label class="upload-btn">
+                        Choose File
+                        <input type="file" id="source-file" accept=".xlsm,.xlsx" hidden>
+                    </label>
+                    <div class="file-name" id="source-name">No file selected</div>
+                    <div class="file-info" id="source-info"></div>
+                </div>
+
+                <div class="upload-card" id="dest-card">
+                    <div class="upload-icon">📤</div>
+                    <h3>Destination File</h3>
+                    <p>The empty MBRS template to fill</p>
+                    <label class="upload-btn">
+                        Choose File
+                        <input type="file" id="dest-file" accept=".xlsm,.xlsx" hidden>
+                    </label>
+                    <div class="file-name" id="dest-name">No file selected</div>
+                    <div class="file-info" id="dest-info"></div>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button id="run-btn" class="run-btn" disabled>
+                    <span class="btn-icon">▶</span> Run Mapper
+                </button>
+            </div>
+
+            <div class="progress-section" id="progress-section" style="display:none;">
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Initializing...</div>
+            </div>
+
+            <div class="log-section" id="log-section" style="display:none;">
+                <h3>📋 Mapping Log</h3>
+                <div class="log-container" id="log-container"></div>
+            </div>
+
+            <div class="result-section" id="result-section" style="display:none;">
+                <div class="result-card success">
+                    <div class="result-icon">✅</div>
+                    <h3>Mapping Complete!</h3>
+                    <p id="result-summary"></p>
+                    <button id="download-btn" class="download-btn">
+                        <span class="btn-icon">⬇️</span> Download Filled File
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built for MBRS (Malaysian Business Reporting System) XBRL financial statement templates</p>
+        </footer>
+    </div>
+
+    <!-- JSZip for handling xlsx/xlsm files (which are ZIP archives) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
