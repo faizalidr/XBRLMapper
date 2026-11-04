@@ -1,0 +1,299 @@
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    color: #e2e8f0;
+    min-height: 100vh;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* ===== Header ===== */
+header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #94a3b8;
+    font-size: 1.05rem;
+}
+
+/* ===== Upload Section ===== */
+.upload-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+    .upload-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+.upload-card {
+    background: rgba(30, 41, 59, 0.8);
+    border: 2px dashed #334155;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.upload-card:hover {
+    border-color: #60a5fa;
+    background: rgba(30, 41, 59, 0.95);
+}
+
+.upload-card.loaded {
+    border-color: #22c55e;
+    border-style: solid;
+    background: rgba(30, 41, 59, 0.95);
+}
+
+.upload-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.upload-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+    color: #f1f5f9;
+}
+
+.upload-card p {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.upload-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.file-name {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #64748b;
+    word-break: break-all;
+}
+
+.file-name.active {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.file-info {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+/* ===== Action Section ===== */
+.action-section {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.run-btn {
+    padding: 0.9rem 3rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.run-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.5);
+}
+
+.run-btn:disabled {
+    background: #334155;
+    color: #64748b;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn-icon {
+    margin-right: 0.3rem;
+}
+
+/* ===== Progress Section ===== */
+.progress-section {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #1e293b;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #3b82f6, #22c55e);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* ===== Log Section ===== */
+.log-section {
+    margin-bottom: 2rem;
+}
+
+.log-section h3 {
+    margin-bottom: 0.75rem;
+    color: #f1f5f9;
+}
+
+.log-container {
+    background: #0f172a;
+    border: 1px solid #1e293b;
+    border-radius: 10px;
+    padding: 1rem;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    line-height: 1.6;
+}
+
+.log-entry {
+    padding: 2px 0;
+}
+
+.log-entry.info { color: #60a5fa; }
+.log-entry.success { color: #22c55e; }
+.log-entry.warn { color: #f59e0b; }
+.log-entry.error { color: #ef4444; }
+.log-entry.dim { color: #64748b; }
+
+/* ===== Result Section ===== */
+.result-section {
+    margin-bottom: 2rem;
+}
+
+.result-card {
+    background: rgba(30, 41, 59, 0.9);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.result-card.success {
+    border: 2px solid #22c55e;
+}
+
+.result-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+}
+
+.result-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: #22c55e;
+}
+
+.result-card p {
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+}
+
+.download-btn {
+    padding: 0.9rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid #1e293b;
+}
+
+footer p {
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* ===== Scrollbar ===== */
+.log-container::-webkit-scrollbar {
+    width: 6px;
+}
+.log-container::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+.log-container::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 3px;
+}
+
